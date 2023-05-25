@@ -4,6 +4,7 @@
     font-family: 'Quicksand', sans-serif;
     margin: 10px;
     padding: 10px;
+    color: var(--black);
 }
 :root {
     --black: #2c2c2c;
@@ -18,13 +19,25 @@ h2 {
 header h2 {
     padding-top: 15vh;
 }
+a {
+    text-decoration: none;
+    color: var(--black);
+    border: 2px solid var(--silver);
+    text-align: center;
 
+}
 p {
     font-size: 40px;
 }
 header h1 {
     font-size: 150px;
 }
+
+form label {
+    line-height: 2;
+    font-weight: bold;
+}
+
 .card {
     padding: 20px;
     margin: 20px;

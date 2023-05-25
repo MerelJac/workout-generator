@@ -15,8 +15,8 @@
             <h1>MOVING</h1>
         </header>
         <div class="button-options-section">
-            <button href="#build-workout" class="card" id="build-workout">Build New Workout</button>
-            <button href="#saved-section" class="card" id="see-saved-workouts">Saved Workouts</button>
+            <a class="card" id="build-workout" href="#build-workout">Build New Workout</a>
+            <a class="card" id="see-saved-workouts" href="#saved-section">Saved Programs</a>
         </div>
         <!-- build workout / figma -->
         <section id="build-workout">
@@ -24,22 +24,22 @@
             <div class="card">
                 <form>
                     <label for="bodypart">Muscle Group:</label><br>
-                    <input type="checkbox" id="upperbody" name="upperbody">Upper Body<br>
-                    <input type="checkbox" id="lowerbody" name="lowerbod">Lower Body<br>
-                    <input type="checkbox" id="fullbody" name="fullbody">Full Body<br>
-                    <input type="checkbox" id="chest" name="chest">Chest<br>
+                    <input type="checkbox" id="upperbody" name="checklist" value="upperbody">Upper Body<br>
+                    <input type="checkbox" id="lowerbody" name="checklist" value="lowerbody">Lower Body<br>
+                    <input type="checkbox" id="chest" name="checklist" value="chest">Chest<br>
+                    <!-- <input type="checkbox" id="fullbody" name="fullbody">Full Body<br>
                     <input type="checkbox" id="back" name="back">Back<br>
                     <input type="checkbox" id="arms" name="arms">Arms<br>
                     <input type="checkbox" id="legs" name="legs">Legs<br>
                     <input type="checkbox" id="glutes" name="glutes">Glutes<br>
-                    <input type="checkbox" id="core" name="core">Core<br>
+                    <input type="checkbox" id="core" name="core">Core<br> -->
                     <label for="equiptment">Equiptment:</label><br>
-                    <input type="checkbox" id="barbell" name="barbell">Barbell<br>
-                    <input type="checkbox" id="dumbbells" name="dumbbells">Dumbbells<br>
-                    <input type="checkbox" id="bosu" name="bosu">BOSU<br>
+                    <input type="checkbox" id="barbell" name="checklist" value="barbell">Barbell<br>
+                    <input type="checkbox" id="dumbbells" name="checklist" value="dumbbells">Dumbbells<br>
+                    <!-- <input type="checkbox" id="bosu" name="bosu">BOSU<br> -->
                 </form>
             </div>
-            <button class="card" id="generate-workout">Generate Workout</button>
+            <input type="submit" class="card" id="generate-workout" value="Generate Workout">
         </section>
         <section id="printedworkout">
             <div class="card">
