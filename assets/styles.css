@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&family=Raleway:wght@200&display=swap');
+
+* {
+    font-family: 'Quicksand', sans-serif;
+    margin: 10px;
+    padding: 10px;
+}
+:root {
+    --black: #2c2c2c;
+    --silver: #c4c4c4;
+    --medgrey: #949494;
+    ----grey: #8c8c8c;
+  }
+
+h2 {
+    font-size: 80px;
+}
+header h2 {
+    padding-top: 15vh;
+}
+
+p {
+    font-size: 40px;
+}
+header h1 {
+    font-size: 150px;
+}
+.card {
+    padding: 20px;
+    margin: 20px;
+    background-color: silver;
+    box-shadow: 8px 8px var(--medgrey);
+    font-size: 50px;
+    border: solid silver 2px;
+}
+
+.button-options-section {
+    display: flex;
+    flex-direction: column;
+}

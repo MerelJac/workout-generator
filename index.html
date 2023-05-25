@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewpoint" content="width=device-width, inital-scale=1.0">
+        <title>Let's Get Moving</title>
+        <link rel="stylesheet" href="./assets/styles.css">
+    </head>
+
+    <body>
+        <!-- main page / figma -->
+        <header id="home">
+            <img>
+            <h2>Let's get</h2>
+            <h1>MOVING</h1>
+        </header>
+        <div class="button-options-section">
+            <button href="#build-workout" class="card" id="build-workout">Build New Workout</button>
+            <button href="#saved-section" class="card" id="see-saved-workouts">Saved Workouts</button>
+        </div>
+        <!-- build workout / figma -->
+        <section id="build-workout">
+            <h2>Build Workout</h2>
+            <div class="card">
+                <form>
+                    <label for="bodypart">Muscle Group:</label><br>
+                    <input type="checkbox" id="upperbody" name="upperbody">Upper Body<br>
+                    <input type="checkbox" id="lowerbody" name="lowerbod">Lower Body<br>
+                    <input type="checkbox" id="fullbody" name="fullbody">Full Body<br>
+                    <input type="checkbox" id="chest" name="chest">Chest<br>
+                    <input type="checkbox" id="back" name="back">Back<br>
+                    <input type="checkbox" id="arms" name="arms">Arms<br>
+                    <input type="checkbox" id="legs" name="legs">Legs<br>
+                    <input type="checkbox" id="glutes" name="glutes">Glutes<br>
+                    <input type="checkbox" id="core" name="core">Core<br>
+                    <label for="equiptment">Equiptment:</label><br>
+                    <input type="checkbox" id="barbell" name="barbell">Barbell<br>
+                    <input type="checkbox" id="dumbbells" name="dumbbells">Dumbbells<br>
+                    <input type="checkbox" id="bosu" name="bosu">BOSU<br>
+                </form>
+            </div>
+            <button class="card" id="generate-workout">Generate Workout</button>
+        </section>
+        <section id="printedworkout">
+            <div class="card">
+                <!-- workout name and exercises will be appended here -->
+                <h2>//test//</h2>
+            </div>
+            <button class="card" id="regenerate-workout">Regenerate</button>
+            <button class="card" id="save-workout">Save Workout for Later</button>
+        </section>
+        <section id="saved-section">
+            <h2>Saved Workouts</h2>
+            <p>No workouts saved!</p>
+            <!-- same button from above - might become a problem -->
+            <button class="card" id="generate-workout">Generate Workout</button>
+            <div class="card" id="saved workouts">
+                <!-- where saved workouts will be appended as  -->
+            </div>
+        </section>
+    <script src="./assets/script.js"></script>
+    </body>
+    
+</html>
