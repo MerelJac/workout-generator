@@ -2,35 +2,60 @@
 
 * {
     font-family: 'Quicksand', sans-serif;
-    margin: 10px;
+    margin-right: 30px;
     padding: 10px;
     color: var(--black);
 }
 :root {
-    --black: #2c2c2c;
-    --silver: #c4c4c4;
-    --medgrey: #949494;
-    ----grey: #8c8c8c;
+    --black: #565454;
+    --toast: #a26d5e;
+    --softpeach: #ebdede;
+    --sand: #d5aa9e;
   }
 
+header {
+    background-image: url(./images/chalkhands.jpg);
+    background-position: center;
+    opacity: 50%;
+    background-size: cover;
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    margin-top: -10vh;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
 h2 {
     font-size: 80px;
 }
 header h2 {
-    padding-top: 15vh;
+    padding-top: 100%;
+    margin-left: 10vw;
+    margin-right: 10vw;
+    color: black;
+    text-shadow: 5px 5x var(--softpeach);
+    opacity: 100%;
 }
+
 a {
     text-decoration: none;
-    color: var(--black);
-    border: 2px solid var(--silver);
+    color: var(--softpeach);
+    border: 2px solid var(--sand);
     text-align: center;
-
-}
+    height: 100px;
+    }
 p {
     font-size: 40px;
 }
 header h1 {
     font-size: 150px;
+    margin-left: 10vw;
+    margin-right: 10vw;
+    color: var(--toast);
+    text-shadow: 5px 5x var(--sand);
 }
 
 form label {
@@ -42,12 +67,20 @@ form label {
     padding: 20px;
     margin: 20px;
     background-color: silver;
-    box-shadow: 8px 8px var(--medgrey);
+    box-shadow: 10px 10px var(--medgrey);
     font-size: 50px;
     border: solid silver 2px;
+    width: 100%;
 }
 
 .button-options-section {
     display: flex;
     flex-direction: column;
+}
+
+button {
+   display: flex;
+   width: 100%;
+   flex-direction: column;
+   align-items: center;
 }
