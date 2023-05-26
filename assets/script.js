@@ -25,10 +25,17 @@ function buildWorkout() {
             includeWorkouts.push(pickRandom)
         }
     };
-
+    localStorage.setItem("exerciseArray", []);
     includeWorkouts.forEach(function (li) {
         document.querySelector("#print-here").innerHTML += `<li id="given-exercise">${li}</li>`;
+        localStorage.setItem("exercise", [li]);
     })};
+
+
+$(function(){
+    var exercisePrintedList = $('#print-here');
+    $(exercisePrintedList).sortable();
+})
 
 function regenerate() {
     // will clear the included list to start over
@@ -36,20 +43,26 @@ function regenerate() {
     // will empty the contents of the print section
     $("#print-here").empty();
     buildWorkout();
+    localStorage.clear("exerciseArray");
 };
+
+
+var exerciseInput = document.querySelectorAll("#given-exercise");
 
 // either pull array or create an empty array 
 var pastWorkoutsArray = JSON.parse(localStorage.getItem('savedWorkouts')) || [];
 // not working yet
 var savedWorkout = [];
 function saveToFiles() {
-    var exerciseInput = document.querySelectorAll("#given-exercise");
     var workoutObject = {
         date: today,
         exercises: exerciseInput.values
     }
 savedWorkout.push(workoutObject);
-localStorage.setItem("savedWorkout", JSON.stringify(savedWorkout))};
+localStorage.setItem("savedWorkout", JSON.stringify(savedWorkout));
+console.log("check");
+};
+
     // var givenExercise = document.querySelector("#print-here").children;
     // console.log(givenExercise);
     // var workoutObject = {
@@ -63,4 +76,4 @@ localStorage.setItem("savedWorkout", JSON.stringify(savedWorkout))};
 buildWorkoutBtn.addEventListener("click", buildWorkout);
 savedSectionBtn.addEventListener("click", function() {console.log("Saved")});
 regenerateBtn.addEventListener("click", regenerate);
-saveWorkout.addEventListener("click", saveToFiles)
+saveWorkout.addEventListener("click", saveToFiles);
