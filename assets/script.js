@@ -3,67 +3,64 @@ var savedSectionBtn = document.querySelector("#see-saved-workouts");
 var generateWorkoutBtn = document.querySelector("#generate-workout");
 var upperBodyCheckbox = document.querySelector("#upperbody");
 var lowerBodyCheckbox = document.querySelector("#lowerbody");
-// var fullBodyCheckbox = document.querySelector("#fullbody");
+var regenerateBtn = document.querySelector("#regenerate-workout");
+var saveWorkout = document.querySelector("#save-workout");
 
-// array of objects for exercsises:
-const upperBodyExercises = [
-    {name: "Push-Up",
-    weights: true,
-    bodyweight: true},
-    {name: "Pull-Up",
-    weights: true,
-    bodyweight: true},
-    {name: "Bicep Curls",
-    weights: true,
-    bodyweight: false}
-  ];
-const lowerBodyExercises = [
-    {name: "Squats",
-    weights: true,
-    bodyweight: true},
-    {name: "Deadlifts",
-    weights: true,
-    bodyweight: false},
-    {name: "Side Lunges",
-    weights: true,
-    bodyweight: true}
-];
-
-// function to display form for buidling workout attached to EventListener
-function showBuild() {
-    var buildSection = document.querySelector("#build-workout");
-    buildSection.setAttribute("style", "display: flex" );
-}
-
-var includeList = [];
-function saveChecklist() {
-    if (upperBodyCheckbox.checked ) {
-        includeList.push(upperBodyExercises)
-    } else (console.log("null"))
-    if (lowerBodyCheckbox.checked) {
-        includeList.push(lowerBodyExercises) 
-     } else (console.log("null"))};
-
-    console.log(includeList);
-
-    // include checked criteria
-    // if checked criteria matches exercises, push into new array
-    // randomize the array and print 8 exercises onto the page as a li
-    
-// function to display saved workout section either null or with something
-
-// addEventListener to regenerate button to empty the form and display it again
-
-// funtion that saves data from workout to localStorage (linked to EventListner)
-
-// Second generate workout button take you home
-
-// 
+var exercises = ['Push-Ups', 'Pull-Ups', 'Sit Ups', 'Plank', 'Squats', 'Deadlifts', 'Rear Foot Elevated Split Squats', 'Calf Raises', 'Jog', 'Chest Press', 'Bicep Curls', 'Single Leg Deadlifts', 'Fire Hydrants', 'Donkey Kicks', 'Tricep Extensions', 'Hip Bridges', 'Hip Thrusts', 'Pistol Squats'];
 
 
+var workoutLength = 8;
 
+var includeWorkouts = [];
 
+var today = dayjs();
+$('#workout-date').text(today.format('MMM D'));
 
-buildWorkoutBtn.addEventListener("click", showBuild);
+function buildWorkout() {
+    for (var i = 0; i < workoutLength; i++) {
+        var li = document.createElement("li");
+        li.innerText = JSON.stringify(exercises[i]);
+        var pickRandom = exercises[Math.floor(Math.random() * exercises.length)];
+        if (!includeWorkouts.includes(pickRandom)) {
+            includeWorkouts.push(pickRandom)
+        }
+    };
+
+    includeWorkouts.forEach(function (li) {
+        document.querySelector("#print-here").innerHTML += `<li id="given-exercise">${li}</li>`;
+    })};
+
+function regenerate() {
+    // will clear the included list to start over
+    includeWorkouts = [];
+    // will empty the contents of the print section
+    $("#print-here").empty();
+    buildWorkout();
+};
+
+// either pull array or create an empty array 
+var pastWorkoutsArray = JSON.parse(localStorage.getItem('savedWorkouts')) || [];
+// not working yet
+var savedWorkout = [];
+function saveToFiles() {
+    var exerciseInput = document.querySelectorAll("#given-exercise");
+    var workoutObject = {
+        date: today,
+        exercises: exerciseInput.values
+    }
+savedWorkout.push(workoutObject);
+localStorage.setItem("savedWorkout", JSON.stringify(savedWorkout))};
+    // var givenExercise = document.querySelector("#print-here").children;
+    // console.log(givenExercise);
+    // var workoutObject = {
+    //     name: "Workout of the day",
+    //     date: today,
+    //     exercises: givenExercise
+    // };
+    // pastWorkoutsArray.push(workoutObject);
+    // localStorage.setItem("pastWorkouts", JSON.stringify(pastWorkoutsArray))};
+
+buildWorkoutBtn.addEventListener("click", buildWorkout);
 savedSectionBtn.addEventListener("click", function() {console.log("Saved")});
-generateWorkoutBtn.addEventListener("click", saveChecklist);
+regenerateBtn.addEventListener("click", regenerate);
+saveWorkout.addEventListener("click", saveToFiles)
