@@ -1,62 +1,55 @@
 var buildWorkoutBtn = document.querySelector("#build-workout");
 var savedSectionBtn = document.querySelector("#see-saved-workouts");
 var generateWorkoutBtn = document.querySelector("#generate-workout");
+var upperBodyCheckbox = document.querySelector("#upperbody");
+var lowerBodyCheckbox = document.querySelector("#lowerbody");
+// var fullBodyCheckbox = document.querySelector("#fullbody");
+
 // array of objects for exercsises:
-var exercsies = [{
-    name: "Barbell Bench Press",
-    muslceGroup: "Chest",
-    equiptment: "Barbell"
-    },
-    {
-    name: "Barbell Squat",
-    muslceGroup: "Legs",
-    equiptment: "Barbell"
-        },
-    {
-    name: "Barbell Bench Press",
-    equiptment: "Barbell"
-    },
-    {
-    name: "Dumbbell ",
-    muslceGroup: "Chest",
-    equiptment: "Barbell"
-    },]
-var chestExercises = [{
-    name: "Chest Press",
-    barbell: true,
-    dumbbell: true,
-    bodyweight: false
-    },
-    {
-    name: "Push Up",
-    barbell: false,
-    dumbbell: false,
-    bodyweight: false
-    }
-]
+const upperBodyExercises = [
+    {name: "Push-Up",
+    weights: true,
+    bodyweight: true},
+    {name: "Pull-Up",
+    weights: true,
+    bodyweight: true},
+    {name: "Bicep Curls",
+    weights: true,
+    bodyweight: false}
+  ];
+const lowerBodyExercises = [
+    {name: "Squats",
+    weights: true,
+    bodyweight: true},
+    {name: "Deadlifts",
+    weights: true,
+    bodyweight: false},
+    {name: "Side Lunges",
+    weights: true,
+    bodyweight: true}
+];
+
 // function to display form for buidling workout attached to EventListener
 function showBuild() {
     var buildSection = document.querySelector("#build-workout");
     buildSection.setAttribute("style", "display: flex" );
 }
 
-
+var includeList = [];
 function saveChecklist() {
-    // Select all checkboxes
-    var checkboxes = document.querySelectorAll('input[name="checklist"]:checked');
-  
-    // Create an array to store the selected values
-    var selectedItems = [];
-  
-    // Iterate over the checkboxes
-    checkboxes.forEach(function(checkbox) {
-      // Add the value of each checked checkbox to the array
-      selectedItems.push(checkbox.value);
-    });
-  
-    // Do something with the selectedItems array
-    console.log(selectedItems);
-  }
+    if (upperBodyCheckbox.checked ) {
+        includeList.push(upperBodyExercises)
+    } else (console.log("null"))
+    if (lowerBodyCheckbox.checked) {
+        includeList.push(lowerBodyExercises) 
+     } else (console.log("null"))};
+
+    console.log(includeList);
+
+    // include checked criteria
+    // if checked criteria matches exercises, push into new array
+    // randomize the array and print 8 exercises onto the page as a li
+    
 // function to display saved workout section either null or with something
 
 // addEventListener to regenerate button to empty the form and display it again
