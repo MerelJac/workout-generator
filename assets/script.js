@@ -42,6 +42,9 @@ $(function(){
     $(exercisePrintedList).sortable();
 })
 
+$('#exercise').draggable();
+
+
 
 function regenerate() {
     // will clear the included list to start over
