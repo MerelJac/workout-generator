@@ -82,6 +82,34 @@ function addItem() {
     document.querySelector("#print-here").innerHTML += `<div class="alert alert-light alert-dismissible fade show" role="alert" id="exerciseToday">${addedExercise}<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`
     input.value = "Add next";
 }
+
+$( function() {
+    var availableTags = [
+        "Bench press",
+        "Squats",
+        "Deadlifts",
+        "Barbell rows",
+        "Shoulder press",
+        "Pull-ups",
+        "Push-ups",
+        "Dumbbell curls",
+        "Tricep dips",
+        "Lunges",
+        "Leg press",
+        "Calf raises",
+        "Lat pulldowns",
+        "Plank",
+        "Russian twists",
+        "Hamstring curls",
+        "Chest flyes",
+        "Overhead tricep extensions",
+        "Side lateral raises",
+        "Crunches"
+    ];
+    $( "#input" ).autocomplete({
+      source: availableTags
+    });
+  } );
     // var givenExercise = document.querySelector("#print-here").children;
     // console.log(givenExercise);
     // var workoutObject = {
