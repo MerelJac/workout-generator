@@ -48,7 +48,13 @@ header h2 {
     text-shadow: 5px 5x var(--softpeach);
     opacity: 100%;
 }
+#printedworkout {
+    display: none;
+}
 
+#saved-section {
+    display: none;
+}
 a {
     text-decoration: none;
     color: var(--softpeach);

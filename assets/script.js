@@ -5,6 +5,7 @@ var upperBodyCheckbox = document.querySelector("#upperbody");
 var lowerBodyCheckbox = document.querySelector("#lowerbody");
 var regenerateBtn = document.querySelector("#regenerate-workout");
 var saveWorkout = document.querySelector("#save-workout");
+var addBtn = document.querySelector("#add-button");
 
 var exercises = ['Push-Ups', 'Pull-Ups', 'Sit Ups', 'Plank', 'Squats', 'Deadlifts', 'Rear Foot Elevated Split Squats', 'Calf Raises', 'Jog', 'Chest Press', 'Bicep Curls', 'Single Leg Deadlifts', 'Fire Hydrants', 'Donkey Kicks', 'Tricep Extensions', 'Hip Bridges', 'Hip Thrusts', 'Pistol Squats'];
 
@@ -17,6 +18,10 @@ var today = dayjs();
 $('#workout-date').text(today.format('MMM D'));
 
 function buildWorkout() {
+    var printSection = $('#printedworkout');
+    printSection.show();
+    var savedSection = $('#saved-section');
+    savedSection.hide();
     for (var i = 0; i < workoutLength; i++) {
         var li = document.createElement("li");
         li.innerText = JSON.stringify(exercises[i]);
@@ -27,7 +32,7 @@ function buildWorkout() {
     };
     localStorage.setItem("exerciseArray", []);
     includeWorkouts.forEach(function (li) {
-        document.querySelector("#print-here").innerHTML += `<li id="given-exercise">${li}</li>`;
+        document.querySelector("#print-here").innerHTML += `<div class="alert alert-light alert-dismissible fade show" role="alert" id="exerciseToday">${li}<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`
         localStorage.setItem("exercise", [li]);
     })};
 
@@ -36,6 +41,7 @@ $(function(){
     var exercisePrintedList = $('#print-here');
     $(exercisePrintedList).sortable();
 })
+
 
 function regenerate() {
     // will clear the included list to start over
@@ -63,6 +69,19 @@ localStorage.setItem("savedWorkout", JSON.stringify(savedWorkout));
 console.log("check");
 };
 
+function showSaved() {
+    var savedSection = $('#saved-section');
+    savedSection.show();
+    var printSection = $('#printedworkout');
+    printSection.hide();
+}
+
+function addItem() {
+    var input = document.querySelector("input");
+    var addedExercise = input.value;
+    document.querySelector("#print-here").innerHTML += `<div class="alert alert-light alert-dismissible fade show" role="alert" id="exerciseToday">${addedExercise}<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`
+    input.value = "Add next";
+}
     // var givenExercise = document.querySelector("#print-here").children;
     // console.log(givenExercise);
     // var workoutObject = {
@@ -74,6 +93,8 @@ console.log("check");
     // localStorage.setItem("pastWorkouts", JSON.stringify(pastWorkoutsArray))};
 
 buildWorkoutBtn.addEventListener("click", buildWorkout);
-savedSectionBtn.addEventListener("click", function() {console.log("Saved")});
+savedSectionBtn.addEventListener("click", showSaved);
 regenerateBtn.addEventListener("click", regenerate);
 saveWorkout.addEventListener("click", saveToFiles);
+generateWorkoutBtn.addEventListener("click", buildWorkout);
+addBtn.addEventListener("click", addItem);
