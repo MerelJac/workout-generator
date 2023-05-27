@@ -88,6 +88,11 @@ form label {
     width: 100%;
 }
 
+#editTitle {
+    display: flex;
+    flex-direction: row;
+}
+
 .button-options-section {
     display: flex;
     flex-direction: column;
