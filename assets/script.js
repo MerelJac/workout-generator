@@ -75,6 +75,8 @@ function saveNewName() {
 $(function(){
     var exercisePrintedList = $('#print-here');
     $(exercisePrintedList).sortable();
+    var liExercise = $("#exerciseToday");
+    $(liExercise).sortable();
 })
 
 $('#exercise').draggable();
