@@ -56,12 +56,12 @@ function editName() {
         var titleText = newTitleInput.value;
         var newTitleh2 = document.createElement("h2");
         newTitleh2.setAttribute("id", "titleH2");
-        newTitleInput.setAttribute("id", "newTitle");
+        newTitleInput.setAttribute("id", "name");
         newTitleh2.textContent = titleText;
         editTitleDiv.append(newTitleh2);
         var saveTitleBtn = $("#saveTitleBtn");
         saveTitleBtn.css("display", "none");
-        var titleTextBox = $("#newTitle");
+        var titleTextBox = $("#name");
         titleTextBox.css("display", "none");
     });
 };
@@ -102,15 +102,13 @@ var pastWorkoutsArray = JSON.parse(localStorage.getItem('savedWorkouts')) || [];
 // not working yet
 var savedWorkout = [];
 function saveToFiles() {
-    var exercisesIncluded = document.querySelectorAll()
-    var workoutObject = {
-        date: today,
-        exercises: exerciseInput.values
-    }
-savedWorkout.push(workoutObject);
-localStorage.setItem("savedWorkout", JSON.stringify(savedWorkout));
-console.log("check");
-};
+    var workoutTitle};
+
+    
+// savedWorkout.push(workoutObject);
+// localStorage.setItem("savedWorkout", JSON.stringify(savedWorkout));
+// console.log("check");
+
 
 
 function showSaved() {
