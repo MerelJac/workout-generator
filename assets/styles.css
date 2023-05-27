@@ -44,9 +44,8 @@ header h2 {
     padding-top: 100%;
     margin-left: 10vw;
     margin-right: 10vw;
-    color: black;
-    text-shadow: 5px 5x var(--softpeach);
-    opacity: 100%;
+    color: var(--softpeach);
+    text-shadow: var(--black) 1px 0 10px;
 }
 #printedworkout {
     display: none;
@@ -69,10 +68,40 @@ header h1 {
     font-size: 150px;
     margin-left: 10vw;
     margin-right: 10vw;
-    color: var(--toast);
-    text-shadow: 5px 5x var(--sand);
+    color: var(--softpeach);
+    text-shadow: var(--black) 1px 0 20px;
+    
 }
 
+#exerciseToday {
+    background-color: var(--softpeach);
+    color: #565454;
+}
+
+#add-button {
+    background-color: var(--softpeach);
+    font-size: 50px;
+    color: var(--sand);
+    border: solid var(--softpeach) 2px;
+}
+
+#titleInput {
+    background-color: var(--softpeach);
+    color: #565454;
+    border: none;
+
+}
+#saveTitleBtn {
+    background-color: var(--softpeach);
+    font-size: 50px;
+    color: var(--sand);
+    border: solid var(--softpeach) 2px;
+}
+#input {
+    background-color: var(--softpeach);
+    color: #565454;
+    font-size: 40px;
+}
 form label {
     line-height: 2;
     font-weight: bold;
@@ -81,10 +110,11 @@ form label {
 .card {
     padding: 20px;
     margin: 20px;
-    background-color: silver;
-    box-shadow: 10px 10px var(--medgrey);
+    background-color: var(--sand);
+    box-shadow: 10px 10px var(--softpeach);
     font-size: 50px;
-    border: solid silver 2px;
+    color: var(--softpeach);
+    border: solid var(--sand) 2px;
     width: 100%;
 }
 
