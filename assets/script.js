@@ -77,9 +77,11 @@ $(function(){
     $(exercisePrintedList).sortable();
     var liExercise = $("#exerciseToday");
     $(liExercise).sortable();
-})
+});
 
-$('#exercise').draggable();
+$(function(){
+$('#exerciseToday').draggable();
+});
 
 
 
