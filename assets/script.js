@@ -92,10 +92,13 @@ function regenerate() {
     $("#print-here").empty();
     buildWorkout();
     localStorage.clear("exerciseArray");
+    // will rewrite the workout name section
     workoutName.setAttribute("style", "display: flex;");
     var newH2 = $("#titleH2");
     newH2.css("display", "none");
-
+    // clear new exercise input section
+    var input = document.querySelector("input");
+    input.value = "Add custom exercise";
 };
 
 
@@ -126,7 +129,10 @@ function addItem() {
     var input = document.querySelector("input");
     var addedExercise = input.value;
     document.querySelector("#print-here").innerHTML += `<div class="alert alert-light alert-dismissible fade show" role="alert" id="exerciseToday">${addedExercise}<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`
-    input.value = "Add next";
+    // clears value
+    input.value = "";
+    // adds placeholder
+    input.placeholder = "Add next";
 }
 
 $( function() {
@@ -161,7 +167,7 @@ buildWorkoutBtn.addEventListener("click", buildWorkout);
 savedSectionBtn.addEventListener("click", showSaved);
 regenerateBtn.addEventListener("click", regenerate);
 saveWorkout.addEventListener("click", saveToFiles);
-generateWorkoutBtn.addEventListener("click", buildWorkout);
+generateWorkoutBtn.addEventListener("click", regenerate);
 addBtn.addEventListener("click", addItem);
 workoutName.addEventListener("click", editName);
 

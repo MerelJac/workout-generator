@@ -126,12 +126,19 @@ form label {
 #editTitle {
     display: flex;
     flex-direction: row;
+    gap: 20px;
 }
+
+html {
+    scroll-behavior: smooth;
+}
+
 
 .button-options-section {
     display: flex;
     flex-direction: column;
 }
+
 
 button {
    display: flex;
