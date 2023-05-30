@@ -108,21 +108,50 @@ var exerciseInput = document.querySelectorAll("#given-exercise");
 var pastWorkoutsArray = JSON.parse(localStorage.getItem('savedWorkouts')) || [];
 // not working yet
 var savedWorkout = [];
-function saveToFiles() {
-    var workoutTitle};
+
 
     
 // savedWorkout.push(workoutObject);
 // localStorage.setItem("savedWorkout", JSON.stringify(savedWorkout));
 // console.log("check");
 
+// eithe oull array of start a blank one
+var savedWorkout = JSON.parse(localStorage.getItem('storedPrograms')) || [];
+// the id for the LI in the UL 
+id="exerciseToday"
+var objectArrayTemplate = [
+    { title: "",
+        date: "",
+        exercises: "",
 
+    }]
+function saveToFiles() {
+    var name = document.querySelector("#name");
+    var date = document.querySelector('#workout-date');
+    var todaysExercises = document.querySelector("#print-here");
+    console.log(todaysExercises.textContent);
+    localStorage.setItem('workout',
+    JSON.stringify({name: name.textContent,
+        date: date.textContent,
+        exercises: todaysExercises.textContent,
+    }))
+}
 
 function showSaved() {
+    // css styling to hide and show certain sections
     var savedSection = $('#saved-section');
     savedSection.show();
     var printSection = $('#printedworkout');
     printSection.hide();
+    // print saved workouts
+    var localStorageKeys = Object.keys(localStorage);
+    var localStorageContents = [];
+    localStorageKeys.forEach(function(key) {
+        var value = localStorage.getItem('workout');
+        localStorageContents.push(`${workout}: ${value}`);
+    });
+    var outputString = localStorageContents.join("<br>");
+    document.getElementById("saved-section").innerHTML = outputString;
 }
 
 function addItem() {
