@@ -83,8 +83,6 @@ $(function(){
 $('#exerciseToday').draggable();
 });
 
-
-
 function regenerate() {
     // will clear the included list to start over
     includeWorkouts = [];
@@ -99,8 +97,9 @@ function regenerate() {
     // clear new exercise input section
     var input = document.querySelector("input");
     input.value = "Add custom exercise";
+    saveWorkout.innerHTML = "";
+    saveWorkout.innerHTML = "Save Workout for Later";
 };
-
 
 var exerciseInput = document.querySelectorAll("#given-exercise");
 
@@ -125,17 +124,24 @@ var objectArrayTemplate = [
         exercises: "",
 
     }]
+
+    var saveArray = [];
+
 function saveToFiles() {
-    var name = document.querySelector("#name");
-    var date = document.querySelector('#workout-date');
-    var todaysExercises = document.querySelector("#print-here");
-    console.log(todaysExercises.textContent);
-    localStorage.setItem('workout',
-    JSON.stringify({name: name.textContent,
-        date: date.textContent,
-        exercises: todaysExercises.textContent,
-    }))
-}
+    // renames the button to prevent double click
+    saveWorkout.innerHTML = "";
+    saveWorkout.innerHTML = "Saved";
+    var exercisesofWorkout = document.getElementsByClassName("alert");
+
+    for (var i = 0; i < exercisesofWorkout.length; i++) {
+        var exerciseName = exercisesofWorkout[i].textContent;
+        console.log(exerciseName);
+        saveArray.push(exerciseName);
+        localStorage.setItem("exercises", JSON.stringify(saveArray));
+    }
+
+
+};
 
 function showSaved() {
     // css styling to hide and show certain sections
