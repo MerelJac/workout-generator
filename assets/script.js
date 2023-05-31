@@ -15,12 +15,12 @@ var editTitleSection = $("#editTitle");
 var exercises = ['Push-Ups', 'Pull-Ups', 'Sit Ups', 'Plank', 'Squats', 'Deadlifts', 'Rear Foot Elevated Split Squats', 'Calf Raises', 'Jog', 'Chest Press', 'Bicep Curls', 'Single Leg Deadlifts', 'Fire Hydrants', 'Donkey Kicks', 'Tricep Extensions', 'Hip Bridges', 'Hip Thrusts', 'Pistol Squats'];
 
 var workoutLength = 8;
-var includeWorkouts = [];  
+var includeWorkouts = [];
 
 var today = dayjs();
 $('#workout-date').text(today.format('MMM D'));
 
-function buildWorkout() {  
+function buildWorkout() {
     // re-enter name
     // original workout title
     var name = $("#name");
@@ -44,10 +44,12 @@ function buildWorkout() {
         // won't print duplicates
         if (!includeWorkouts.includes(pickRandom)) {
             includeWorkouts.push(pickRandom)
-        }};
+        }
+    };
     includeWorkouts.forEach(function (li) {
         document.querySelector("#print-here").innerHTML += `<div class="alert alert-light alert-dismissible fade show" role="alert" id="exerciseToday">${li}<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`
-    })};
+    })
+};
 
 function editName() {
     // hide old workout name
@@ -67,7 +69,7 @@ function editName() {
     // put it somewhere
     editTitleDiv.append(newTitleInput);
     editTitleDiv.append(saveTitleBtn);
-    saveTitleBtn.addEventListener("click", function() {
+    saveTitleBtn.addEventListener("click", function () {
         // show the old name
         workoutName.setAttribute("style", "display: flex;");
         // remove the text from the old name
@@ -96,15 +98,15 @@ function saveNewName() {
 
 }
 
-$(function(){
+$(function () {
     var exercisePrintedList = $('#print-here');
     $(exercisePrintedList).sortable();
     var liExercise = $("#exerciseToday");
     $(liExercise).sortable();
 });
 
-$(function(){
-$('#exerciseToday').draggable();
+$(function () {
+    $('#exerciseToday').draggable();
 });
 
 function regenerate() {
@@ -186,13 +188,13 @@ function showSaved() {
     // var customName = JSON.parse(localStorage.getItem("customTitle", [0]));
     var savedDate = JSON.parse(localStorage.getItem("workoutDate", [0]));
     var savedArrayExercises = JSON.parse(localStorage.getItem("exercises", [0]));
-    var newContent = 
+    var newContent =
         `<div class="hover-effect saved-card alert alert-light alert-dismissible fade show" role="alert" id="exerciseToday"><p>${savedTitle}</p><br>
         <p>${savedDate}</p><br>
         <p>${savedArrayExercises}</p><br><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></div>`;
     savedSection.find("h2").after(newContent);
     // savedTitle + savedDate + savedArrayExercises);
-    
+
 };
 
 
@@ -206,7 +208,7 @@ function addItem() {
     input.placeholder = "Add next";
 }
 
-$( function() {
+$(function () {
     var availableTags = [
         "Bench press",
         "Squats",
@@ -229,10 +231,10 @@ $( function() {
         "Side lateral raises",
         "Crunches"
     ];
-    $( "#input" ).autocomplete({
-      source: availableTags
+    $("#input").autocomplete({
+        source: availableTags
     });
-  } );
+});
 
 buildWorkoutBtn.addEventListener("click", buildWorkout);
 savedSectionBtn.addEventListener("click", showSaved);
@@ -242,4 +244,14 @@ generateWorkoutBtn.addEventListener("click", regenerate);
 addBtn.addEventListener("click", addItem);
 workoutName.addEventListener("click", editName);
 
+
+fetch("https://api.api-ninjas.com/v1/exercises?muscle=biceps", {
+    method: 'GET',
+    headers: { 'x-api-key': 'v2lhVblG/cSJW/xZC6RmNA==XfUMg05HC5xtg7p3' }
+}).then((dogs) => {
+    console.log(dogs)
+    return dogs.json()
+}).then((eggs) => {
+    console.log(eggs)
+})
 
