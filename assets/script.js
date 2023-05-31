@@ -43,33 +43,50 @@ function buildWorkout() {
     })};
 
 function editName() {
+    // hide old workout name
     workoutName.setAttribute("style", "display: none;");
+    // locate edit title div
     var editTitleDiv = $('#editTitle');
+    // create a text input for new title
     var newTitleInput = document.createElement("input");
+    // give it an ID
     newTitleInput.setAttribute("id", "titleInput");
+    // locate the save button
     var saveTitleBtn = document.createElement("button");
+    // give the save button an ID
     saveTitleBtn.setAttribute("id", "saveTitleBtn");
+    // give the save button text
     saveTitleBtn.innerText = "Save Title";
+    // put it somewhere
     editTitleDiv.append(newTitleInput);
     editTitleDiv.append(saveTitleBtn);
     saveTitleBtn.addEventListener("click", function() {
+        // show the old name
+        workoutName.setAttribute("style", "display: flex;");
+        // remove the text from the old name
+        workoutName.textContent = "";
+        // find the new value text content
         var titleText = newTitleInput.value;
-        var newTitleh2 = document.createElement("h2");
-        newTitleh2.setAttribute("id", "titleH2");
-        newTitleInput.setAttribute("id", "name");
-        newTitleh2.textContent = titleText;
-        editTitleDiv.append(newTitleh2);
-        var saveTitleBtn = $("#saveTitleBtn");
-        saveTitleBtn.css("display", "none");
-        var titleTextBox = $("#name");
-        titleTextBox.css("display", "none");
+        // make the old name the new value
+        workoutName.textContent = titleText;
+        // hide the old buttons
+        editTitleDiv.hide();
+        saveTitleBtn.hide();
     });
 };
 
 function saveNewName() {
+    // original workout title
+    var name = $("#name");
+    // make it blank
+    name.text("");
+    // find the input for new text
     var newNameInputBox = $("#titleInput");
-    var newName = newNameInputBox.textContent;
-    editTitleSection.innerHTML += `<h2>${newName}</h2>`
+    // override old name w new name contents
+    var name = newNameInputBox.textContent;
+    var nameValue = name.text();
+    editTitleSection.innerHTML += `<h2>${nameValue}</h2>`
+
 }
 
 $(function(){
@@ -126,6 +143,12 @@ function saveToFiles() {
     var name = $("#name");
     var nameValue = name.text();
     localStorage.setItem("workoutTitle", JSON.stringify(nameValue));
+    // // local storage if custom name
+    // var input = $("titleInput");
+    // var addedTitle = input.text();
+    // localStorage.setItem("customTitle", JSON.stringify(addedTitle));
+
+
     // local storage for date
     var workoutDate = $("#workout-date");
     var workoutDateValue = workoutDate.text();
@@ -150,12 +173,23 @@ function showSaved() {
     printSection.hide();
     // print saved workouts
     var savedTitle = JSON.parse(localStorage.getItem("workoutTitle", [0]));
+    // var customName = JSON.parse(localStorage.getItem("customTitle", [0]));
     var savedDate = JSON.parse(localStorage.getItem("workoutDate", [0]));
     var savedArrayExercises = JSON.parse(localStorage.getItem("exercises", [0]));
     var newContent = 
         `<div class="saved-card alert alert-light alert-dismissible fade show" role="alert" id="exerciseToday"><p>${savedTitle}</p><br>
         <p>${savedDate}</p><br>
         <p>${savedArrayExercises}</p><br><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></div>`;
+    // if (localStorage.getItem("workoutTitle", [0])) {
+    // var newContent = 
+    //     `<div class="saved-card alert alert-light alert-dismissible fade show" role="alert" id="exerciseToday"><p>${savedTitle}</p><br>
+    //     <p>${savedDate}</p><br>
+    //     <p>${savedArrayExercises}</p><br><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></div>`;}
+    // else if (localStorage.getItem("customTitle", [0])) {
+    //     var newContent = 
+    //     `<div class="saved-card alert alert-light alert-dismissible fade show" role="alert" id="exerciseToday"><p>${customName}</p><br>
+    //     <p>${savedDate}</p><br>
+    //     <p>${savedArrayExercises}</p><br><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></div>`;}
     
     savedSection.find("h2").after(newContent);
     // savedTitle + savedDate + savedArrayExercises);
