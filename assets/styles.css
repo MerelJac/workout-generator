@@ -144,6 +144,14 @@ html {
     border: 5px solid #a26d5e;
 }
 
+.hover-effect {
+    transition: transform 0.3s ease;
+}
+.hover-effect:hover {
+    /* increase size by 10% */
+    transform: scale(1.1);
+}
+
 button {
    display: flex;
    width: 100%;

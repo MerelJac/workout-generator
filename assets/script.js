@@ -14,15 +14,14 @@ var editTitleSection = $("#editTitle");
 
 var exercises = ['Push-Ups', 'Pull-Ups', 'Sit Ups', 'Plank', 'Squats', 'Deadlifts', 'Rear Foot Elevated Split Squats', 'Calf Raises', 'Jog', 'Chest Press', 'Bicep Curls', 'Single Leg Deadlifts', 'Fire Hydrants', 'Donkey Kicks', 'Tricep Extensions', 'Hip Bridges', 'Hip Thrusts', 'Pistol Squats'];
 
-
 var workoutLength = 8;
-
-var includeWorkouts = [];
+var includeWorkouts = [];  
 
 var today = dayjs();
 $('#workout-date').text(today.format('MMM D'));
 
-function buildWorkout() {
+function buildWorkout() {  
+    savedSectionBtn.style.display = "flex";
     var printSection = $('#printedworkout');
     printSection.show();
     var savedSection = $('#saved-section');
@@ -158,6 +157,7 @@ function saveToFiles() {
 
 function showSaved() {
     // if show shaved is empty, show "no workouts saved" otherwise show cards
+
     var savedCard = $('.saved-card');
     var noneSaved = $('#none-saved');
 
@@ -167,6 +167,7 @@ function showSaved() {
         generateWorkoutBtn.style.display = "none";
     };
     // css styling to hide and show certain sections
+    savedSectionBtn.style.display = "none";
     var savedSection = $('#saved-section');
     savedSection.show();
     var printSection = $('#printedworkout');
@@ -177,24 +178,14 @@ function showSaved() {
     var savedDate = JSON.parse(localStorage.getItem("workoutDate", [0]));
     var savedArrayExercises = JSON.parse(localStorage.getItem("exercises", [0]));
     var newContent = 
-        `<div class="saved-card alert alert-light alert-dismissible fade show" role="alert" id="exerciseToday"><p>${savedTitle}</p><br>
+        `<div class="hover-effect saved-card alert alert-light alert-dismissible fade show" role="alert" id="exerciseToday"><p>${savedTitle}</p><br>
         <p>${savedDate}</p><br>
         <p>${savedArrayExercises}</p><br><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></div>`;
-    // if (localStorage.getItem("workoutTitle", [0])) {
-    // var newContent = 
-    //     `<div class="saved-card alert alert-light alert-dismissible fade show" role="alert" id="exerciseToday"><p>${savedTitle}</p><br>
-    //     <p>${savedDate}</p><br>
-    //     <p>${savedArrayExercises}</p><br><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></div>`;}
-    // else if (localStorage.getItem("customTitle", [0])) {
-    //     var newContent = 
-    //     `<div class="saved-card alert alert-light alert-dismissible fade show" role="alert" id="exerciseToday"><p>${customName}</p><br>
-    //     <p>${savedDate}</p><br>
-    //     <p>${savedArrayExercises}</p><br><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></div>`;}
-    
     savedSection.find("h2").after(newContent);
     // savedTitle + savedDate + savedArrayExercises);
     
 };
+
 
 function addItem() {
     var input = document.querySelector("input");
