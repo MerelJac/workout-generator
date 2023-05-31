@@ -21,6 +21,8 @@ var today = dayjs();
 $('#workout-date').text(today.format('MMM D'));
 
 function buildWorkout() {  
+    saveWorkout.innerHTML = "";
+    saveWorkout.innerHTML = "Save Workout for Later";
     savedSectionBtn.style.display = "flex";
     var printSection = $('#printedworkout');
     printSection.show();
