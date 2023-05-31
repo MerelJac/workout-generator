@@ -130,9 +130,19 @@ function saveToFiles() {
     var workoutDate = $("#workout-date");
     var workoutDateValue = workoutDate.text();
     localStorage.setItem("workoutDate", JSON.stringify(workoutDateValue));
+
 };
 
 function showSaved() {
+    // if show shaved is empty, show "no workouts saved" otherwise show cards
+    var savedCard = $('.saved-card');
+    var noneSaved = $('#none-saved');
+
+    // if local storage has this key, run this function
+    if (localStorage.getItem('exercises')) {
+        noneSaved.hide();
+        generateWorkoutBtn.style.display = "none";
+    };
     // css styling to hide and show certain sections
     var savedSection = $('#saved-section');
     savedSection.show();
@@ -143,9 +153,10 @@ function showSaved() {
     var savedDate = JSON.parse(localStorage.getItem("workoutDate", [0]));
     var savedArrayExercises = JSON.parse(localStorage.getItem("exercises", [0]));
     var newContent = 
-        `<div class="saved-card"><p>${savedTitle}</p><br>
+        `<div class="saved-card alert alert-light alert-dismissible fade show" role="alert" id="exerciseToday"><p>${savedTitle}</p><br>
         <p>${savedDate}</p><br>
-        <p>${savedArrayExercises}</p><br></div>`;
+        <p>${savedArrayExercises}</p><br><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></div>`;
+    
     savedSection.find("h2").after(newContent);
     // savedTitle + savedDate + savedArrayExercises);
     
