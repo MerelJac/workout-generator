@@ -101,7 +101,6 @@ function regenerate() {
     saveWorkout.innerHTML = "Save Workout for Later";
 };
 
-var exerciseInput = document.querySelectorAll("#given-exercise");
 
 // either pull array or create an empty array 
 var pastWorkoutsArray = JSON.parse(localStorage.getItem('savedWorkouts')) || [];
@@ -109,23 +108,7 @@ var pastWorkoutsArray = JSON.parse(localStorage.getItem('savedWorkouts')) || [];
 var savedWorkout = [];
 
 
-    
-// savedWorkout.push(workoutObject);
-// localStorage.setItem("savedWorkout", JSON.stringify(savedWorkout));
-// console.log("check");
-
-// eithe oull array of start a blank one
-var savedWorkout = JSON.parse(localStorage.getItem('storedPrograms')) || [];
-// the id for the LI in the UL 
-id="exerciseToday"
-var objectArrayTemplate = [
-    { title: "",
-        date: "",
-        exercises: "",
-
-    }]
-
-    var saveArray = [];
+var saveArray = [];
 
 function saveToFiles() {
     // renames the button to prevent double click
@@ -139,8 +122,14 @@ function saveToFiles() {
         saveArray.push(exerciseName);
         localStorage.setItem("exercises", JSON.stringify(saveArray));
     }
-
-
+    // local storage for workout name
+    var name = $("#name");
+    var nameValue = name.text();
+    localStorage.setItem("workoutTitle", JSON.stringify(nameValue));
+    // local storage for date
+    var workoutDate = $("#workout-date");
+    var workoutDateValue = workoutDate.text();
+    localStorage.setItem("workoutDate", JSON.stringify(workoutDateValue));
 };
 
 function showSaved() {
@@ -150,15 +139,17 @@ function showSaved() {
     var printSection = $('#printedworkout');
     printSection.hide();
     // print saved workouts
-    var localStorageKeys = Object.keys(localStorage);
-    var localStorageContents = [];
-    localStorageKeys.forEach(function(key) {
-        var value = localStorage.getItem('workout');
-        localStorageContents.push(`${workout}: ${value}`);
-    });
-    var outputString = localStorageContents.join("<br>");
-    document.getElementById("saved-section").innerHTML = outputString;
-}
+    var savedTitle = JSON.parse(localStorage.getItem("workoutTitle", [0]));
+    var savedDate = JSON.parse(localStorage.getItem("workoutDate", [0]));
+    var savedArrayExercises = JSON.parse(localStorage.getItem("exercises", [0]));
+    var newContent = 
+        `<div class="saved-card"><p>${savedTitle}</p><br>
+        <p>${savedDate}</p><br>
+        <p>${savedArrayExercises}</p><br></div>`;
+    savedSection.find("h2").after(newContent);
+    // savedTitle + savedDate + savedArrayExercises);
+    
+};
 
 function addItem() {
     var input = document.querySelector("input");

@@ -139,6 +139,10 @@ html {
     flex-direction: column;
 }
 
+.saved-card {
+    line-height: 1;
+    border: 5px solid #a26d5e;
+}
 
 button {
    display: flex;
