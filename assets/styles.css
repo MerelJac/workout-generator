@@ -17,12 +17,13 @@
     list-style-type: none;
     border: 2px solid #565454;
 }
-header {
+.home {
     background-image: url(./images/chalkhands.jpg);
     background-position: center;
     opacity: 50%;
     background-size: cover;
-    width: 100vw;
+    width: 102vw;
+    height: 110vh;
     position: relative;
     left: 50%;
     right: 50%;
@@ -40,12 +41,24 @@ header {
 h2 {
     font-size: 80px;
 }
-header h2 {
-    padding-top: 100%;
-    margin-left: 10vw;
-    margin-right: 10vw;
-    color: var(--softpeach);
-    text-shadow: var(--sand) 5px 6px 5px;
+
+.nav {
+    padding: 10px;
+    font-size: 50px;
+}
+
+.nav#build-workout {
+    position: fixed;
+    bottom: 248px;
+    left: 64%;
+    transform: translateX(-160%);
+  }
+
+.nav#see-saved-workouts {
+    position: fixed;
+    bottom: 248px;
+    left: 70%;
+    transform: translateX(-40%);
 }
 #printedworkout {
     display: none;
@@ -57,7 +70,6 @@ header h2 {
 a {
     text-decoration: none;
     color: var(--softpeach);
-    border: 2px solid var(--sand);
     text-align: center;
     height: 100px;
     }

@@ -21,6 +21,12 @@ var today = dayjs();
 $('#workout-date').text(today.format('MMM D'));
 
 function buildWorkout() {  
+    // re-enter name
+    // original workout title
+    var name = $("#name");
+    // make it blank
+    name.text("Workout of the Day");
+    // edit labels on buttons
     saveWorkout.innerHTML = "";
     saveWorkout.innerHTML = "Save Workout for Later";
     savedSectionBtn.style.display = "flex";
@@ -104,6 +110,7 @@ $('#exerciseToday').draggable();
 function regenerate() {
     // will clear the included list to start over
     includeWorkouts = [];
+    // re-enter name
     // will empty the contents of the print section
     $("#print-here").empty();
     buildWorkout();
