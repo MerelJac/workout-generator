@@ -183,15 +183,16 @@ function saveToFiles() {
 
 function showSaved() {
     // if show shaved is empty, show "no workouts saved" otherwise show cards
-
-    var savedCard = $('.saved-card');
     var noneSaved = $('#none-saved');
 
     // if local storage has this key, run this function
     if (localStorage.getItem('exercises')) {
         noneSaved.hide();
-        generateWorkoutBtn.style.display = "none";
     };
+    // if local storage does not exist, dont show card "null"
+    if (!localStorage.getItem('exercises')) {
+        $('#saved-card').hide();
+    }
     // css styling to hide and show certain sections
     var savedSection = $('#saved-section');
     savedSection.show();
