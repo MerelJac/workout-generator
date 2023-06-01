@@ -255,7 +255,6 @@ buildWorkoutBtn.addEventListener("click", buildWorkout);
 savedSectionBtn.addEventListener("click", showSaved);
 regenerateBtn.addEventListener("click", regenerate);
 saveWorkout.addEventListener("click", saveToFiles);
-generateWorkoutBtn.addEventListener("click", regenerate);
 addBtn.addEventListener("click", addItem);
 workoutName.addEventListener("click", editName);
 
