@@ -164,6 +164,9 @@ html {
     transform: scale(1.05);
 }
 
+.alert {
+    cursor: move;
+}
 button {
    display: flex;
    width: 100%;

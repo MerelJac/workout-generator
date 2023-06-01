@@ -47,7 +47,7 @@ function buildWorkout() {
         }
     };
     includeWorkouts.forEach(function (li) {
-        document.querySelector("#print-here").innerHTML += `<div class="alert alert-light alert-dismissible fade show" role="alert" id="exerciseToday">${li}<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`
+        document.querySelector("#print-here").innerHTML += `<div draggable="true" class="alert alert-light alert-dismissible fade show" role="alert" id="exerciseToday">${li}<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`
     })
 };
 
@@ -245,13 +245,4 @@ addBtn.addEventListener("click", addItem);
 workoutName.addEventListener("click", editName);
 
 
-fetch("https://api.api-ninjas.com/v1/exercises?muscle=biceps", {
-    method: 'GET',
-    headers: { 'x-api-key': 'v2lhVblG/cSJW/xZC6RmNA==XfUMg05HC5xtg7p3' }
-}).then((dogs) => {
-    console.log(dogs)
-    return dogs.json()
-}).then((eggs) => {
-    console.log(eggs)
-})
 
