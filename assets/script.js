@@ -106,18 +106,18 @@ $(function () {
 });
 
 // drag and drop for mobile
-function allowDrop(event) {
-    event.preventDefault();
+function allowDrop(ev) {
+    ev.preventDefault();
 }
 // set what we are dragging
-function drag(event) {
-    event.dataTransfer.setData("text", event.target.id);
+function drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
 }
 // enable drop 
-function drop(event) {
-    event.preventDefault();
-    var data = event.dataTransfer.getData("text");
-    event.target.appendChild(document.getElementById(data));
+function drop(ev) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("text");
+    ev.target.appendChild(document.getElementById(data));
 }
 
 
@@ -193,7 +193,6 @@ function showSaved() {
         generateWorkoutBtn.style.display = "none";
     };
     // css styling to hide and show certain sections
-    savedSectionBtn.style.display = "none";
     var savedSection = $('#saved-section');
     savedSection.show();
     var printSection = $('#printedworkout');
