@@ -47,7 +47,7 @@ function buildWorkout() {
         }
     };
     includeWorkouts.forEach(function (li) {
-        document.querySelector("#print-here").innerHTML += `<div draggable="true" class="alert alert-light alert-dismissible fade show" role="alert" id="exerciseToday">${li}<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`
+        document.querySelector("#print-here").innerHTML += `<div draggable="true" ondragstart="drag(event)" class="alert alert-light alert-dismissible fade show" role="alert" id="exerciseToday">${li}<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`
     })
 };
 
@@ -105,11 +105,26 @@ $(function () {
     $(liExercise).sortable();
 });
 
-$(function () {
-    $('#exerciseToday').draggable();
-});
+// drag and drop for mobile
+function allowDrop(event) {
+    event.preventDefault();
+}
+// set what we are dragging
+function drag(event) {
+    event.dataTransfer.setData("text", event.target.id);
+}
+// enable drop 
+function drop(event) {
+    event.preventDefault();
+    var data = event.dataTransfer.getData("text");
+    event.target.appendChild(document.getElementById(data));
+}
+
 
 function regenerate() {
+    // locate edit title div to hide
+    var editTitleDiv = $('#editTitle');
+    editTitleDiv.hide();
     // will clear the included list to start over
     includeWorkouts = [];
     // re-enter name
