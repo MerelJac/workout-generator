@@ -9,7 +9,7 @@ When the user opens the page they can either build a new workout or view saved w
 If the user selects to see the saved workouts, the user is taken to a list of past workouts and is able to click on each one for reuse as long as localStorage allows. 
 
 ## Usage
-This code can be customized with different exercises in the randomized array and new autocomplete options can be provided. 
+This code can be customized with different exercises in the randomized array and new autocomplete options can be provided. This code is designed for mobile and desktop. Sortable currently works on desktop but drag and drop is not functional on mobile.
 
 ## Link to Deployed Application
 https://mereljac.github.io/workout-generator/
