@@ -47,7 +47,12 @@ h2 {
     font-size: 50px;
 }
 
-.nav#build-workout {
+#instructions {
+    font-variant: all-small-caps;
+    line-height: 1;
+}
+
+.nav#new-workout {
     position: fixed;
     bottom: 248px;
     left: 64%;

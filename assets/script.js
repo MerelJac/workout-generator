@@ -1,4 +1,4 @@
-var buildWorkoutBtn = document.querySelector("#build-workout");
+var buildWorkoutBtn = document.querySelector("#new-workout");
 var savedSectionBtn = document.querySelector("#see-saved-workouts");
 var generateWorkoutBtn = document.querySelector("#generate-workout");
 var upperBodyCheckbox = document.querySelector("#upperbody");
