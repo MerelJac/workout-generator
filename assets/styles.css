@@ -192,4 +192,18 @@ button {
     header h1 {
         line-height: .5;
     }
+
+    .nav#new-workout {
+        position: fixed;
+        right: 6%;
+        font-size: 30px;
+        top: 80%;
+    }
+
+    .nav#see-saved-workouts {
+        position: fixed;
+        top: 80%;
+        font-size: 30px;
+    }
   }
+
