@@ -1,5 +1,5 @@
 # workout-generator
-This application will let the user create a workout given their interests and available equipment as well as store past workouts for reuse. 
+This application will let the user create a workout as well as store past workouts for reuse. 
 
 ## Description
 The application is designed to help the user build workouts and save them for later use. 
@@ -9,7 +9,7 @@ When the user opens the page they can either build a new workout or view saved w
 If the user selects to see the saved workouts, the user is taken to a list of past workouts and is able to click on each one for reuse as long as localStorage allows. 
 
 ## Usage
-This code can be customized with different exercises in the randomized array and new autocomplete options can be provided. 
+This code can be customized with different exercises in the randomized array and new autocomplete options can be provided. This code is designed for mobile and desktop. Sortable currently works on desktop but drag and drop is not functional on mobile.
 
 ## Link to Deployed Application
 https://mereljac.github.io/workout-generator/
