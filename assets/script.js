@@ -101,8 +101,6 @@ function saveNewName() {
 $(function () {
     var exercisePrintedList = $('#print-here');
     $(exercisePrintedList).sortable();
-    var liExercise = $("#exerciseToday");
-    $(liExercise).sortable();
 });
 
 // drag and drop for mobile
@@ -113,14 +111,17 @@ function allowDrop(ev) {
 function drag(ev) {
     ev.dataTransfer.setData("text", ev.target.id);
 }
-// enable drop 
-function drop(ev) {
+  // Enable drop
+  function drop(ev) {
     ev.preventDefault();
     var data = ev.dataTransfer.getData("text");
-    ev.target.appendChild(document.getElementById(data));
-}
-
-
+    var draggedElement = document.getElementById(data);
+    var dropContainer = ev.target;
+  
+    // Check if the dragged element and the drop container have the appropriate IDs
+    if (draggedElement.id === 'exerciseToday' && dropContainer.id === 'print-here') {
+      dropContainer.appendChild(draggedElement);
+    }};
 function regenerate() {
     // locate edit title div to hide
     var editTitleDiv = $('#editTitle');
@@ -200,7 +201,6 @@ function showSaved() {
     printSection.hide();
     // print saved workouts
     var savedTitle = JSON.parse(localStorage.getItem("workoutTitle", [0]));
-    // var customName = JSON.parse(localStorage.getItem("customTitle", [0]));
     var savedDate = JSON.parse(localStorage.getItem("workoutDate", [0]));
     var savedArrayExercises = JSON.parse(localStorage.getItem("exercises", [0]));
     var newContent =
@@ -208,8 +208,6 @@ function showSaved() {
         <p>${savedDate}</p><br>
         <p>${savedArrayExercises}</p><br><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></div>`;
     savedSection.find("h2").after(newContent);
-    // savedTitle + savedDate + savedArrayExercises);
-
 };
 
 
