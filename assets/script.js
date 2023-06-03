@@ -122,6 +122,10 @@ function drag(ev) {
     if (draggedElement.id === 'exerciseToday' && dropContainer.id === 'print-here') {
       dropContainer.appendChild(draggedElement);
     }};
+// prevent drop if they have the same ID
+    if (draggedElement.id === 'exerciseToday' && dropContainer.id !== 'exerciseToday') {
+        dropContainer.appendChild(draggedElement);
+      };
 function regenerate() {
     // locate edit title div to hide
     var editTitleDiv = $('#editTitle');
