@@ -12,10 +12,17 @@ var dateSection = $("#workout-date");
 var saveTitleBtn = $("#saveTitleBtn");
 var editTitleSection = $("#editTitle");
 
-var exercises = ['Push-Ups', 'Pull-Ups', 'Sit Ups', 'Plank', 'Squats', 'Deadlifts', 'Rear Foot Elevated Split Squats', 'Calf Raises', 'Jog', 'Chest Press', 'Bicep Curls', 'Single Leg Deadlifts', 'Fire Hydrants', 'Donkey Kicks', 'Tricep Extensions', 'Hip Bridges', 'Hip Thrusts', 'Pistol Squats'];
+var exercises = ['Push-Ups', 'Sit Ups', 'Plank', 'Rear Foot Elevated Split Squats', 'Calf Raises', 'Bicep Curls', 'Single Leg Deadlifts', 'Fire Hydrants', 'Donkey Kicks', 'Tricep Extensions', 'Hip Bridges', 'Pistol Squats'];
+
+var mainLifts = ['Chest Press', 'Incline Shoulder Press', 'Pull Up', 'Back Squats', 'Front Squats', 'Deadlifts', 'Hip Thrusts'];
+
+var cardio = ['Jog', 'Stairmaster', 'Powerwalk', 'Jump Rope', 'Burpees', 'Run', 'Bike']
 
 var workoutLength = 8;
 var includeWorkouts = [];
+var mainLiftsLength = 2
+var includeMainWorkouts = []
+var cardioLength = 1;
 
 var today = dayjs();
 $('#workout-date').text(today.format('MMM D'));
@@ -34,6 +41,20 @@ function buildWorkout() {
     printSection.show();
     var savedSection = $('#saved-section');
     savedSection.hide();
+    // create main lifts list here
+    for (var m = 0; m < mainLiftsLength; m++) {
+        var li = document.createElement("li");
+        li.innerText = JSON.stringify(mainLifts[m]);
+        var pickRandomMain = mainLifts[Math.floor(Math.random() * mainLifts.length)];
+        if (!includeMainWorkouts.includes(pickRandomMain)) {
+            includeMainWorkouts.push(pickRandomMain)
+        }
+    };
+
+    includeMainWorkouts.forEach(function (li) {
+        document.querySelector("#print-here").innerHTML += `<div draggable="true" ondragstart="drag(event)" class="alert alert-light alert-dismissible fade show" role="alert" id="exerciseToday">${li}<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`});
+
+    // create workouts from EXERCISE list 
     for (var i = 0; i < workoutLength; i++) {
         // create a li in the printed section
         var li = document.createElement("li");
@@ -46,9 +67,17 @@ function buildWorkout() {
             includeWorkouts.push(pickRandom)
         }
     };
+
     includeWorkouts.forEach(function (li) {
-        document.querySelector("#print-here").innerHTML += `<div draggable="true" ondragstart="drag(event)" class="alert alert-light alert-dismissible fade show" role="alert" id="exerciseToday">${li}<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`
-    })
+        document.querySelector("#print-here").innerHTML += `<div draggable="true" ondragstart="drag(event)" class="alert alert-light alert-dismissible fade show" role="alert" id="exerciseToday">${li}<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`})
+
+    // add cardio as part of the list
+    var li = document.createElement("li");
+    var pickRandomCardio = [Math.floor(Math.random() * cardio.length)];
+    console.log(pickRandomCardio);
+    li.innerText = cardio[pickRandomCardio];
+
+    document.querySelector("#print-here").innerHTML += `<div draggable="true" ondragstart="drag(event)" class="alert alert-light alert-dismissible fade show" role="alert" id="exerciseToday">${li.innerText}<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`;
 };
 
 function editName() {
