@@ -104,28 +104,29 @@ $(function () {
 });
 
 // drag and drop for mobile
-function allowDrop(ev) {
-    ev.preventDefault();
-}
-// set what we are dragging
-function drag(ev) {
-    ev.dataTransfer.setData("text", ev.target.id);
-}
-  // Enable drop
-  function drop(ev) {
-    ev.preventDefault();
-    var data = ev.dataTransfer.getData("text");
-    var draggedElement = document.getElementById(data);
-    var dropContainer = ev.target;
+// function allowDrop(ev) {
+//     ev.preventDefault();
+// }
+// // set what we are dragging
+// function drag(ev) {
+//     ev.dataTransfer.setData("text", ev.target.id);
+// }
+//   // Enable drop
+//   function drop(ev) {
+//     ev.preventDefault();
+//     var data = ev.dataTransfer.getData("text");
+//     var draggedElement = document.getElementById(data);
+//     var dropContainer = ev.target;
   
-    // Check if the dragged element and the drop container have the appropriate IDs
-    if (draggedElement.id === 'exerciseToday' && dropContainer.id === 'print-here') {
-      dropContainer.appendChild(draggedElement);
-    }};
-// prevent drop if they have the same ID
-    if (draggedElement.id === 'exerciseToday' && dropContainer.id !== 'exerciseToday') {
-        dropContainer.appendChild(draggedElement);
-      };
+//     // Check if the dragged element and the drop container have the appropriate IDs
+//     if (draggedElement.id === 'exerciseToday' && dropContainer.id === 'print-here') {
+//       dropContainer.appendChild(draggedElement);
+//     }};
+// // prevent drop if they have the same ID
+//     var draggedElement = document.getElementById(data);
+//     if (draggedElement.id === 'exerciseToday' && dropContainer.id !== 'exerciseToday') {
+//         dropContainer.appendChild(draggedElement);
+//       };
 function regenerate() {
     // locate edit title div to hide
     var editTitleDiv = $('#editTitle');
