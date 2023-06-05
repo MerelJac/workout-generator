@@ -162,6 +162,7 @@ function regenerate() {
     editTitleDiv.hide();
     // will clear the included list to start over
     includeWorkouts = [];
+    includeMainWorkouts = [];
     // re-enter name
     // will empty the contents of the print section
     $("#print-here").empty();
