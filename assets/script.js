@@ -28,6 +28,14 @@ var today = dayjs();
 $('#workout-date').text(today.format('MMM D'));
 
 function buildWorkout() {
+    // clear the section 
+    $("#print-here").empty();
+    var editTitleDiv = $('#editTitle');
+    editTitleDiv.hide();
+    // will clear the included list to start over
+    includeWorkouts = [];
+    includeMainWorkouts = [];
+    localStorage.clear("exerciseArray");
     // re-enter name
     // original workout title
     var name = $("#name");
