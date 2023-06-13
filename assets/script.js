@@ -205,6 +205,8 @@ function showSaved() {
     if (localStorage.getItem("exercises") === null) {
         var noneSaved = $('#none-saved');
         noneSaved.show();  
+        var savedSection = $('#saved-section');
+        savedSection.show();
     } else {
      // if show shaved is empty, show "no workouts saved" otherwise show cards
     var noneSaved = $('#none-saved');
