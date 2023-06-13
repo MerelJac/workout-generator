@@ -81,9 +81,8 @@ function buildWorkout() {
 
     // add cardio as part of the list
     var li = document.createElement("li");
-    var pickRandomCardio = [Math.floor(Math.random() * cardio.length)];
-    console.log(pickRandomCardio);
-    li.innerText = cardio[pickRandomCardio];
+    var pickRandomCardio = cardio[Math.floor(Math.random() * cardio.length)];
+    li.innerText = pickRandomCardio;
 
     document.querySelector("#print-here").innerHTML += `<div draggable="true" ondragstart="drag(event)" class="alert alert-light alert-dismissible fade show" role="alert" id="exerciseToday">${li.innerText}<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`;
 };
@@ -229,14 +228,17 @@ function showSaved() {
     // if show shaved is empty, show "no workouts saved" otherwise show cards
     var noneSaved = $('#none-saved');
 
-    // if local storage has this key, run this function
-    if (localStorage.getItem('exercises')) {
-        noneSaved.hide();
-    };
-    // if local storage does not exist, dont show card "null"
-    if (!localStorage.getItem('exercises')) {
-        $('#saved-card').hide();
-    }
+    if (localStorage.getItem("exercises") === 0) {
+        location.reload
+    } else {
+    // // if local storage has this key, run this function
+    // if (localStorage.getItem('exercises')) {
+    //     noneSaved.hide();
+    // };
+    // // if local storage does not exist, dont show card "null"
+    // if (!localStorage.getItem('exercises')) {
+    //     $('#saved-card').hide();
+    // }
     // css styling to hide and show certain sections
     var savedSection = $('#saved-section');
     savedSection.show();
@@ -251,7 +253,7 @@ function showSaved() {
         <p>${savedDate}</p><br>
         <p>${savedArrayExercises}</p><br><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></div>`;
     savedSection.find("h2").after(newContent);
-};
+}};
 
 
 function addItem() {
