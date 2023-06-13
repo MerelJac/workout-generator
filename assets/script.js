@@ -11,6 +11,7 @@ var newNameInputBox = document.querySelector("#nameInput");
 var dateSection = $("#workout-date");
 var saveTitleBtn = $("#saveTitleBtn");
 var editTitleSection = $("#editTitle");
+var checkboxes = document.getElementsByClassName("checkedOption");
 
 var exercises = ['Push-Ups', 'Sit Ups', 'Plank', 'Rear Foot Elevated Split Squats', 'Calf Raises', 'Bicep Curls', 'Single Leg Deadlifts', 'Fire Hydrants', 'Donkey Kicks', 'Tricep Extensions', 'Hip Bridges', 'Pistol Squats'];
 
@@ -272,6 +273,7 @@ regenerateBtn.addEventListener("click", regenerate);
 saveWorkout.addEventListener("click", saveToFiles);
 addBtn.addEventListener("click", addItem);
 workoutName.addEventListener("click", editName);
+
 
 
 
