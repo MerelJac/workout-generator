@@ -92,6 +92,7 @@ function editName() {
     workoutName.setAttribute("style", "display: none;");
     // locate edit title div
     var editTitleDiv = $('#editTitle');
+    editTitleDiv.show();
     // create a text input for new title
     var newTitleInput = document.createElement("input");
     // give it an ID
@@ -139,30 +140,6 @@ $(function () {
     $(exercisePrintedList).sortable();
 });
 
-// drag and drop for mobile
-// function allowDrop(ev) {
-//     ev.preventDefault();
-// }
-// // set what we are dragging
-// function drag(ev) {
-//     ev.dataTransfer.setData("text", ev.target.id);
-// }
-//   // Enable drop
-//   function drop(ev) {
-//     ev.preventDefault();
-//     var data = ev.dataTransfer.getData("text");
-//     var draggedElement = document.getElementById(data);
-//     var dropContainer = ev.target;
-  
-//     // Check if the dragged element and the drop container have the appropriate IDs
-//     if (draggedElement.id === 'exerciseToday' && dropContainer.id === 'print-here') {
-//       dropContainer.appendChild(draggedElement);
-//     }};
-// // prevent drop if they have the same ID
-//     var draggedElement = document.getElementById(data);
-//     if (draggedElement.id === 'exerciseToday' && dropContainer.id !== 'exerciseToday') {
-//         dropContainer.appendChild(draggedElement);
-//       };
 function regenerate() {
     // locate edit title div to hide
     var editTitleDiv = $('#editTitle');
@@ -225,20 +202,13 @@ function saveToFiles() {
 };
 
 function showSaved() {
-    // if show shaved is empty, show "no workouts saved" otherwise show cards
-    var noneSaved = $('#none-saved');
-
-    if (localStorage.getItem("exercises") === 0) {
-        location.reload
+    if (localStorage.getItem("exercises") === null) {
+        var noneSaved = $('#none-saved');
+        noneSaved.show();  
     } else {
-    // // if local storage has this key, run this function
-    // if (localStorage.getItem('exercises')) {
-    //     noneSaved.hide();
-    // };
-    // // if local storage does not exist, dont show card "null"
-    // if (!localStorage.getItem('exercises')) {
-    //     $('#saved-card').hide();
-    // }
+     // if show shaved is empty, show "no workouts saved" otherwise show cards
+    var noneSaved = $('#none-saved');
+    noneSaved.hide();
     // css styling to hide and show certain sections
     var savedSection = $('#saved-section');
     savedSection.show();
