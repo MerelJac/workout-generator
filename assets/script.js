@@ -189,10 +189,6 @@ function saveToFiles() {
     var name = $("#name");
     var nameValue = name.text();
     localStorage.setItem("workoutTitle", JSON.stringify(nameValue));
-    // // local storage if custom name
-    // var input = $("titleInput");
-    // var addedTitle = input.text();
-    // localStorage.setItem("customTitle", JSON.stringify(addedTitle));
 
 
     // local storage for date
