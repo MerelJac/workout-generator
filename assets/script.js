@@ -28,6 +28,7 @@ var today = dayjs();
 $('#workout-date').text(today.format('MMM D'));
 
 function buildWorkout() {
+    $("#none-saved").hide()
     // clear the section 
     $("#print-here").empty();
     var editTitleDiv = $('#editTitle');
@@ -202,6 +203,7 @@ function saveToFiles() {
 };
 
 function showSaved() {
+    $("#printedworkout").hide();
     if (localStorage.getItem("exercises") === null) {
         var noneSaved = $('#none-saved');
         noneSaved.show();  

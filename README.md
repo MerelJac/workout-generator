@@ -11,5 +11,19 @@ If the user selects to see the saved workouts, the user is taken to a list of pa
 ## Usage
 This code can be customized with different exercises in the randomized array and new autocomplete options can be provided. This code is designed for mobile and desktop. Sortable currently works on desktop but drag and drop is not functional on mobile.
 
+## Screenshots of Application 
+
+Landing Page:
+![alt text](./assets/images/screenshot-home.png)
+
+Build Workout Button:
+![alt text](./assets/images/screenshot-produceworkout.png)
+
+Edit Workout: 
+![alt text](./assets/images/screenshot-editTitle%2BaddExercise.png)
+
+Saved Workout:
+![alt text](./assets/images/screenshot-saved.png)
+
 ## Link to Deployed Application
 https://mereljac.github.io/workout-generator/
